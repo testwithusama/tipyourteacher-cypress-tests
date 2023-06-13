@@ -1,8 +1,18 @@
 describe("Dashboard Tests", () => {
   it("Should be able to land on the login page", () => {
     cy.visit("https://tipyourteacher-staging.vercel.app");
-    cy.get(".get-started-default-input").type("testing");
+    function getRandomItem(arr) {
+      const randomIndex = Math.floor(Math.random() * arr.length);
+
+      const item = arr[randomIndex];
+
+      return item;
+    }
+    const array = ["testing", "hello", "user", "new", "maximus"];
+    const result = getRandomItem(array);
+    cy.get(".get-started-default-input").type(result);
     cy.get(".get-started-default-input-button").click();
+    cy.wait(2000);
     cy.get(".justify-content-between > :nth-child(1)").should(
       "have.text",
       "Email/Password"
@@ -14,7 +24,7 @@ describe("Dashboard Tests", () => {
     cy.get(".login100-form-btn").click();
     cy.get(".bg-white").should(
       "have.text",
-      "get an email from us soon, when we will go live."
+      "Hi, We can't wait to launch our services and we show you all the great things we've been working on. You'll get an email from us soon, when we will go live."
     );
   });
 });
