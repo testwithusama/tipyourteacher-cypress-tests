@@ -3,9 +3,7 @@ describe("Dashboard Tests", () => {
     cy.visit("https://tipyourteacher-staging.vercel.app");
     function getRandomItem(arr) {
       const randomIndex = Math.floor(Math.random() * arr.length);
-
       const item = arr[randomIndex];
-
       return item;
     }
     const array = ["testing", "hello", "user", "new", "maximus"];
