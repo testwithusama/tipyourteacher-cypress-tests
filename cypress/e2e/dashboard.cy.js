@@ -9,20 +9,19 @@ describe("Dashboard Tests", () => {
     const array = ["testing", "hello", "user", "new", "maximus"];
     const result = getRandomItem(array);
     cy.get(".get-started-default-input").type(result);
-    cy.get(".get-started-default-input-button").click();
+    cy.get(".d-none > .w-100").click();
     cy.wait(2000);
-    cy.get(".justify-content-between > :nth-child(1)").should(
-      "have.text",
-      "Email/Password"
+    cy.get("form > .text-center").should("have.text", " Sign Up");
+    cy.get(":nth-child(2) > .input-group > #formpassword").type(
+      "usamatesteng@gmail.com"
     );
-    cy.get(".justify-content-between > :nth-child(1)").click();
-    cy.get(":nth-child(2) > #formEmail").type("usamatesteng@gmail.com");
     cy.get(":nth-child(3) > .input-group > #formpassword").type("Test@1998");
-    cy.get(":nth-child(4) > .input-group > #formpassword").type("Test@1998");
+    cy.get(":nth-child(5) > .input-group > #formpassword").type("Test@1998");
     cy.get(".login100-form-btn").click();
+    cy.wait(6000);
     cy.get(".bg-white").should(
       "have.text",
-      "Hi, We can't wait to launch our services and we show you all the great things we've been working on. You'll get an email from us soon, when we will go live."
+      "Success!You are now a part of Tip Your Teacher! We look forward to helping those you serve show their appreciation for all you do in the noblest of professions. We have added you to our list to be a part of our intitial launch. Look for an email from us with additional information on your next steps!"
     );
   });
 });
